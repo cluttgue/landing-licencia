@@ -1,6 +1,6 @@
 
 // pages/index.tsx
-import { useState, useRef, useCallback, useMemo } from 'react';
+import {useState, useRef, useCallback, useMemo, useEffect} from 'react';
 import Head from 'next/head';
 import {
   Box,
@@ -285,6 +285,8 @@ export default function Home() {
                               borderColor="gray.300"
                               _focus={{ borderColor: "blue.500", boxShadow: "0 0 0 1px #3182ce" }}
                               size="lg"
+                              min={field.type === 'date' ? new Date().toISOString().split('T')[0] : undefined}
+
                           />
                           <FormErrorMessage>{errors[field.name]}</FormErrorMessage>
                         </FormControl>
